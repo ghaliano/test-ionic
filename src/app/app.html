@@ -1,1 +1,25 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-menu  [content]="mycontent">
+    <ion-header>
+    <ion-toolbar>
+      <ion-title>مرحبا بك</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button  ion-item *ngIf="!isLogged" (click)="openPage(authPage)">
+        تسجيل الدخول
+      </button>
+      <button  ion-item *ngIf="isLogged" (click)="logout()">
+        الخروج
+      </button>
+      <button ion-item (click)="openPage(aboutPage)">
+        ماهي الأساسيات السبعه ؟
+      </button>
+      <button ion-item (click)="openPage(linkPage)">
+        روابط مفيدة
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>

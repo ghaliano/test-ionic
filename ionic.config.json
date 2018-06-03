@@ -1,6 +1,6 @@
 {
   "name": "sevenSide",
-  "app_id": "",
+  "app_id": "efdad455",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
