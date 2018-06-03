@@ -1,4 +1,4 @@
 export const environment = {
-  server: 'http://138.68.131.143/',
-  server_api: 'http://138.68.131.143/api/'
+  server: 'http://ebc.api.eaglebusinesscenter.com/',
+  server_api: 'http://ebc.api.eaglebusinesscenter.com/api/'
 };
