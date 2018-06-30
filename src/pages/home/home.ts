@@ -37,7 +37,7 @@ export class HomePage {
         this.pillars = [];
       }
       if (!pillars.getMember().length){
-        this.loadDictionaries();
+        this.loadDictionaries(true);
       }else{
         pillars.getMember().forEach((pillar)=>{
           this.pillars.push(pillar);
