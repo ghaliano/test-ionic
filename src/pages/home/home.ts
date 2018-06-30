@@ -36,9 +36,13 @@ export class HomePage {
       if (init){
         this.pillars = [];
       }
-      pillars.getMember().forEach((pillar)=>{
-        this.pillars.push(pillar);
-      });
+      if (!pillars.getMember().length){
+        this.loadDictionaries();
+      }else{
+        pillars.getMember().forEach((pillar)=>{
+          this.pillars.push(pillar);
+        });
+      }
     })
   }
 

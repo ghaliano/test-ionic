@@ -1,6 +1,7 @@
 export class UserActivity{
   id: number;
   activity: string;
+  pillar: string;
   createdAt: Date;
 
   getCollectionUri(){
