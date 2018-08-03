@@ -3,22 +3,47 @@
 <ion-menu  [content]="mycontent">
     <ion-header>
     <ion-toolbar>
-      <ion-title>مرحبا بك</ion-title>
+      <ion-title>Bonjour</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
+
     <ion-list>
-      <button  ion-item *ngIf="!isLogged" (click)="openPage(authPage)">
-        تسجيل الدخول
+        <ion-list-header>
+          <ion-icon name="construct"></ion-icon> Utiles <button ion-button outline style="font-size: 8px; color: gray">Soon</button>
+        </ion-list-header>
+        <button  ion-item (click)="openPage(authPage)">
+         Oû aller aujourd'hui ?
+        </button>
+        <button ion-item>
+          Les dernierres prises !
+        </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-icon name="bulb"></ion-icon> Apprendre <button ion-button outline style="font-size: 8px; color: gray">Soon</button>
+      </ion-list-header>
+      <button  ion-item (click)="openPage(authPage)">
+       Comment choisir sa destination ?
       </button>
-      <button  ion-item *ngIf="isLogged" (click)="logout()">
-        الخروج
+      <button  ion-item (click)="openPage(authPage)">
+       Apprendre l'Anglaise
       </button>
-      <button ion-item (click)="openPage(aboutPage)">
-        ماهي الأساسيات السبعه ؟
+      <button  ion-item (click)="openPage(authPage)">
+       Apprendre le Surf casting
       </button>
-      <button ion-item (click)="openPage(linkPage)">
-        روابط مفيدة
+      <button  ion-item (click)="openPage(authPage)">
+       Apprendre le Rock fishing
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-icon name="person"></ion-icon> Mon compte <button ion-button outline style="font-size: 8px; color: gray">Soon</button>
+      </ion-list-header>
+      <button  ion-item>
+        Se connecter
       </button>
     </ion-list>
   </ion-content>

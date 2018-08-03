@@ -1,0 +1,80 @@
+ 
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+<ion-buttons end>
+    <button ion-button [disabled]="displayType == 'list'"  (click)="setDisplayType('list')">
+        <ion-icon name="list"></ion-icon>
+      </button>
+      
+
+    <button ion-button [disabled]="displayType == 'map'"  (click)="setDisplayType('map')">
+        <ion-icon name="map"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>les vendeurs d'appats</ion-title>
+  </ion-navbar>
+  <ion-searchbar  
+    [(ngModel)]="filter.term"
+    [showCancelButton]="true"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    placeholder="Nom du vendeur">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content  [hidden]="displayType == 'map'">
+<ion-grid>
+<ion-row>
+  <ion-col *ngFor="let bait of baits">
+ <div class="card card-1"  (click)='toggleBait(bait.id)' style="position: relative">
+   <img src="/assets/imgs/{{bait.picture}}">
+    <ion-icon *ngIf="isFiltredBait(bait.id) && filter.baits && filter.baits.length" name="md-checkmark-circle" style="position: absolute; top: 5px; right: 5px; color: white;"></ion-icon>
+    <span  style="font-size: 9px;" item-end>{{bait.name}}</span>
+   </div>
+   </ion-col>
+</ion-row>
+</ion-grid>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let store of stores">
+  <ion-item>
+    <div>{{store.fullname}}</div> 
+
+    <div style="font-size: 12px;">
+      Appats 
+      <span *ngFor="let stock of store.stocks">
+      {{ stock.bait.name }} 
+      <span *ngIf="stock.price">prix {{ stock.price }}</span></span> 
+    </div>
+    <div style="color:gray;font-size: 12px;"> {{store.address}}</div>
+    <button ion-button outline item-end>
+      <ion-icon name="call"></ion-icon> {{store.phone}}
+    </button>
+    <button ion-button item-end (click)="toggleLike(store)" color="danger">
+      <ion-icon name="{{ hasLike(store)?'heart':'heart-outline' }}"></ion-icon>
+    </button>
+  </ion-item>
+
+  <ion-item-options>
+            <button ion-button color="danger" (click)="call(item)">
+call <ion-icon name="call"></ion-icon></button>
+            <button ion-button color="more" (click)="show(item)">
+show<ion-icon name="more"></ion-icon>
+            </button>
+
+    </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
+ <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+   <ion-infinite-scroll-content loadingText="..."></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+
+</ion-content>
+<ion-content  [hidden]="displayType == 'list'">
+  <div class="map-page" style="height: 100%; width: 100%" #mapCanvas id="map_canvas"></div>
+</ion-content>

@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { PartialCollectionView, IriTemplateMapping, hydraIriTemplate } from '../models/hydra.model';
-import * as s from '../models';
 
+import {
+  Store,
+  Stock,
+  Bait,
+  User } from '../models';
 @Injectable()
 
 export class ObjectService{
@@ -37,6 +41,16 @@ export class ObjectService{
   }
 
   createClass(className: string){
-    return new s[className]();
-  }
+      let theObject:any;
+
+      switch (className) {   
+        //case 'Dict': theObject = new Dict(); break;
+        case 'User': theObject = new User(); break;
+        case 'Store': theObject = new Store(); break;
+        case 'Stock': theObject = new Stock(); break;
+        case 'Bait': theObject = new Bait(); break;
+      }
+
+      return theObject;
+    }
 }

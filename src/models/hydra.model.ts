@@ -14,6 +14,10 @@ export class HydraCollection {
       return this['hydra:member'];
     }
 
+    pushMember(member: any) {
+      this['hydra:member'].push(member);
+    }
+
     getHydraView() {
       return this['hydra:view'];
     }

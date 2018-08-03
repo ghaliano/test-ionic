@@ -1,4 +1,4 @@
 export const environment = {
-  server: 'http://ebc.api.eaglebusinesscenter.com/',
-  server_api: 'http://ebc.api.eaglebusinesscenter.com/api/'
+  server: 'http://127.0.0.1:8000/',
+  server_api: 'http://127.0.0.1:8000/api/'
 };

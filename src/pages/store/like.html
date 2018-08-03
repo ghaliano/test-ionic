@@ -1,0 +1,46 @@
+ 
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Liste des favories</ion-title>
+
+  <ion-buttons end>
+      <button ion-button icon-only (click)="clearAll()">
+        <ion-icon name="remove-circle"></ion-icon> initialiser
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let store of stores">
+      <ion-item>
+        <div>{{store.fullname}}</div> 
+
+        <div style="font-size: 12px;">
+          Appats 
+          <span *ngFor="let stock of store.stocks">
+          {{ stock.bait.name }} 
+          <span *ngIf="stock.price">prix {{ stock.price }}</span></span> 
+        </div>
+        <div style="color:gray;font-size: 12px;">{{store.address}}</div><button ion-button outline item-end>
+      <ion-icon name="phone"></ion-icon> {{store.phone}}
+    </button>
+        <button ion-button item-end (click)="removeLike(store)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="call(item)">
+          call <ion-icon name="call"></ion-icon>
+        </button>
+        <button ion-button color="more" (click)="show(item)">
+          show <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
